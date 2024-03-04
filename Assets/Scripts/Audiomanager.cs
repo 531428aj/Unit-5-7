@@ -6,46 +6,43 @@ using UnityEngine.UI;
 
 public class Audiomanager : MonoBehaviour
 {
-    public static Audiomanager Instance;
+    public static Audiomanager instance;
     private void Awake()
     {
-         if (Instance == null)
+         if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
 
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource sfxSource;
+    [SerializeField] AudioSource gameSource;
 
 
 
     public AudioClip music;
     public AudioClip sfx;
+    public AudioClip game;
 
-    
 
     private void Start()
     {
         musicSource.clip = music;
-        musicSource.Play();
+        //musicSource.Play();
 
-        sfxSource.clip = sfx;
-        sfxSource.Play();
+        gameSource.clip = sfx;
+       // sfxSource.Play();
 
+
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+        }
+
+        print("start audio manager");
     }
 
-    public void SFXSoundStart()
-    {
-        sfxSource.clip = sfx;
-        sfxSource.Play();
-    }
-    public void SFXSoundStop()
-    {
-        sfxSource.clip = sfx;
-        sfxSource.Stop();
-    }
+
     public void MenuSoundStart()
     {
         musicSource.clip = music;
@@ -57,25 +54,22 @@ public class Audiomanager : MonoBehaviour
         musicSource.Stop();
     }
 
+    public void GameSoundStart()
+    {
+        gameSource.clip = game;
+        gameSource.Play();
+    }
+    public void GameSoundStop()
+    {
+        gameSource.clip = game;
+        gameSource.Stop();
+    }
+
+
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Game")
-        {
-            
-            SFXSoundStop();
-            MenuSoundStop();
-        }
-        
-
-        if (SceneManager.GetActiveScene().name == "Menu")
-        {
-            
-
-
-            SFXSoundStart();
-            MenuSoundStart();
-        }
+      
         
     }
 

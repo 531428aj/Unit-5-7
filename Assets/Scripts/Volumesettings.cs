@@ -12,7 +12,7 @@ public class Volumesettings : MonoBehaviour
     public bool stopAudio;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider SFXSlider;
+    [SerializeField] private Slider gameSlider;
     
     private void Start()
     {
@@ -23,7 +23,7 @@ public class Volumesettings : MonoBehaviour
         else
         {
             SetMusicVolume();
-            SetSFXVolume();
+            SetGameVolume();
             
         }
 
@@ -37,9 +37,9 @@ public class Volumesettings : MonoBehaviour
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
-    public void SetSFXVolume()
+    public void SetGameVolume()
     {
-        float volume = SFXSlider.value;
+        float volume = gameSlider.value;
         audioMixer.SetFloat("SFX", volume);
         PlayerPrefs.SetFloat("SFXVolume", volume);
     }
@@ -49,9 +49,9 @@ public class Volumesettings : MonoBehaviour
     private void LoadVolume()
     {
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        gameSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         SetMusicVolume();
-        SetSFXVolume();
+        SetGameVolume();
         
     }
 
