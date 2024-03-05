@@ -8,7 +8,7 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
-        Audiomanager.instance.GameSoundStart();
+        
         Audiomanager.instance.MenuSoundStop();
     }
 

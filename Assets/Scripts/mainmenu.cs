@@ -7,7 +7,7 @@ public class Mainmenu : MonoBehaviour
 {
     void Start()
     {
-        Audiomanager.instance.GameSoundStop();
+        
         Audiomanager.instance.MenuSoundStart();
     }
 
@@ -15,4 +15,5 @@ public class Mainmenu : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
 }

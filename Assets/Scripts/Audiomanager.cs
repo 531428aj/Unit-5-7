@@ -17,13 +17,13 @@ public class Audiomanager : MonoBehaviour
     }
 
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource gameSource;
+    [SerializeField] AudioSource sfxSource;
 
 
 
     public AudioClip music;
     public AudioClip sfx;
-    public AudioClip game;
+    
 
 
     private void Start()
@@ -31,8 +31,7 @@ public class Audiomanager : MonoBehaviour
         musicSource.clip = music;
         //musicSource.Play();
 
-        gameSource.clip = sfx;
-       // sfxSource.Play();
+        sfxSource.clip = sfx;
 
 
         if (SceneManager.GetActiveScene().name == "Menu")
@@ -54,16 +53,7 @@ public class Audiomanager : MonoBehaviour
         musicSource.Stop();
     }
 
-    public void GameSoundStart()
-    {
-        gameSource.clip = game;
-        gameSource.Play();
-    }
-    public void GameSoundStop()
-    {
-        gameSource.clip = game;
-        gameSource.Stop();
-    }
+
 
 
 
